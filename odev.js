@@ -10,9 +10,8 @@ var person = {
   }
 }
 
-var messageFunc = person.message
+var messageFunc = person.message();
 messageFunc();
-
 
 /*  
   Odev 2:
@@ -25,7 +24,7 @@ messageFunc();
 var numbers = {
   numbers: [[10,20,30], 2],
   multiply: function(){
-    this.numbers[0].map(function(number, numberIndex){
+    this.numbers[0].map((number, numberIndex) =>{
         const result = number * this.numbers[1];
         console.log(result)
     })
@@ -43,7 +42,25 @@ numbers.multiply();
   Ornek : isValidName(" J ohn") false donmeli
 */
 function isValidName(name){
-
+  if(typeof(name)==="string"){
+    let tempName=name.trim();
+    let control;
+    let strArray=name.split(" ");
+    strArray.forEach((value,index)=>{
+      if(value.length == 1){
+        control=1;
+      }
+    });
+      if(control == 1){
+      	return "false";
+      }
+      else{
+      	return "true";
+      }
+  }
+  else{
+    return "false";
+  }
 }
 
 /*
@@ -58,8 +75,15 @@ function isValidName(name){
   Ornek: katilimSaati("3", 20) 60 sonucunu vermelidir.
   Ornek: katilimSaati("5", "30") 150 sonucunu vermelidir.
 */
-function katilimSaati(dersSayisi, dersSuresi){
 
+function katilimSaati(dersSayisi,dersSuresi){
+
+	 if( (typeof(dersSayisi) === 'number' || typeof(dersSayisi) === 'string') && (typeof(dersSuresi) === 'number' || typeof(dersSuresi) === 'string')){
+  
+    return dersSayisi*dersSuresi;
+  }
+  else{
+    return "false";
+  }
 }
-
 
